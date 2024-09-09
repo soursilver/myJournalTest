@@ -64,14 +64,27 @@ export default function Index() {
     }, []);
   
     return (
+      <View style={styles.scrollViewContainer}>
       <ScrollView style={styles.entriesView}>
-        {entries.map((entry, index) => (
-          <View key={index} style={{ padding: 10, borderBottomWidth: 1, borderBottomColor: '#ccc' }}>
-            <Text style={{ fontSize: 16, fontWeight: 'bold' }}>{entry.text}</Text>
-            <Text style={{ fontSize: 14, color: '#666' }}>{formatDate(entry.date)}</Text>
+       {entries.map((entry, index) => (
+          <View style={styles.scrollViewEntries} key={index}>
+            <Text style={styles.entriesTitle}>
+              {new Date(entry.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}
+            </Text>
+            <Text style={{ fontSize: 14, color: 'gray' }}>
+              {new Date(entry.date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+            </Text>
+            <Text style={{ fontSize: 16 }}>
+              {entry.text}
+            </Text>
+            <View style={{ height: 10 }} />
           </View>
         ))}
       </ScrollView>
+      <Pressable style={styles.newEntryButton} onPress={handleButtonPress}>
+        <Text style={styles.entryButtonText} >+</Text>
+      </Pressable>
+      </View>
     );
   };
   
@@ -81,12 +94,8 @@ export default function Index() {
   };
 
   return (
-    
     <View style={styles.container}>
       <EntriesList />
-      <Pressable style={styles.button} onPress={handleButtonPress}>
-        <Text style={styles.buttonText}>New Entry</Text>
-      </Pressable>
       <Modal
         style={styles.modalContent}
         visible={modalVisible}
@@ -94,7 +103,6 @@ export default function Index() {
         onRequestClose={handleModalClose}
       >
         <View style={styles.container}>
-          <Text>Enter some text:</Text>
           <TextInput
           style={styles.textInput}
             value={inputText}
