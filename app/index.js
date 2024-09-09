@@ -1,8 +1,7 @@
-import { View, Text, Pressable, Modal, TextInput } from 'react-native';
+import { View, Text, Pressable, Modal, TextInput, ScrollView } from 'react-native';
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import * as FileSystem from 'expo-file-system';
-import { ScrollView } from 'react-native';
 
 export default function Index() {
   const [modalVisible, setModalVisible] = useState(false);
@@ -25,21 +24,21 @@ export default function Index() {
     const text = inputText;
     const date = new Date();
     const fileName = 'entries.json';
-  
+    
     const fileUri = `${FileSystem.documentDirectory}${fileName}`;
-  
+    
     try {
       const existingData = await FileSystem.readAsStringAsync(fileUri, { encoding: 'utf8' });
       const jsonData = JSON.parse(existingData);
       jsonData.push({ text, date: date.toISOString() });
+      jsonData.sort((a, b) => new Date(b.date) - new Date(a.date)); // sort in descending order by date
       await FileSystem.writeAsStringAsync(fileUri, JSON.stringify(jsonData), { encoding: 'utf8' });
-      setEntries(jsonData.slice(-3)); // update the entries state with the last 3 entries
     } catch (error) {
       // If the file doesn't exist, create it with the initial data
       await FileSystem.writeAsStringAsync(fileUri, JSON.stringify([{ text, date: date.toISOString() }]), { encoding: 'utf8' });
       setEntries([{ text, date: date.toISOString() }]); // update the entries state with the initial entry
     }
-  
+    
     setModalVisible(false);
   };
 
@@ -53,6 +52,7 @@ export default function Index() {
         try {
           const existingData = await FileSystem.readAsStringAsync(fileUri, { encoding: 'utf8' });
           const jsonData = JSON.parse(existingData);
+          jsonData.sort((a, b) => new Date(b.date) - new Date(a.date)); // sort in descending order by date
           setEntries(jsonData);
         } catch (error) {
           // If the file doesn't exist, set the entries state to an empty array
