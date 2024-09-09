@@ -1,0 +1,52 @@
+import { View, Text, Pressable, Modal, TextInput } from 'react-native';
+import React, { useState } from 'react';
+import styles from './styles';
+
+export default function Index() {
+  const [modalVisible, setModalVisible] = useState(false);
+  const [inputText, setInputText] = useState('');
+
+  const handleButtonPress = async () => {
+    setModalVisible(true);
+  };
+
+  const handleModalClose = () => {
+    setModalVisible(false);
+  };
+
+  const handleTextInputChange = (text) => {
+    setInputText(text);
+  };
+
+  const handleSubmit = async () => {
+
+    setModalVisible(false);
+  };
+
+  return (
+    <View style={styles.container}>
+      <Pressable style={styles.button} onPress={handleButtonPress}>
+        <Text style={styles.buttonText}>New Entry</Text>
+      </Pressable>
+      <Modal
+        style={styles.modalContent}
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={handleModalClose}
+      >
+        <View style={styles.container}>
+          <Text>Enter some text:</Text>
+          <TextInput
+          style={styles.textInput}
+            value={inputText}
+            onChangeText={handleTextInputChange}
+            placeholder="Type something..."
+          />
+          <Pressable onPress={handleSubmit}>
+            <Text>Submit</Text>
+          </Pressable>
+        </View>
+      </Modal>
+    </View>
+  );
+}
