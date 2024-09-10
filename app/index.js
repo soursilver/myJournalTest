@@ -7,6 +7,7 @@ export default function Index() {
   const [modalVisible, setModalVisible] = useState(false);
   const [inputText, setInputText] = useState('');
   const [entries, setEntries] = useState([]);
+  const entryDate = new Date();
 
   const handleButtonPress = async () => {
     setModalVisible(true);
@@ -40,12 +41,28 @@ export default function Index() {
     }
     
     setModalVisible(false);
+    setInputText('');
   };
 
   const EntriesList = () => {
     const [entries, setEntries] = useState([]);
   
     useEffect(() => {
+
+      const cleanEntries = async (callback) => {
+        const fileName = 'entries.json';
+        const fileUri = `${FileSystem.documentDirectory}${fileName}`;
+        try {
+          const existingData = await FileSystem.readAsStringAsync(fileUri, { encoding: 'utf8' });
+          const jsonData = JSON.parse(existingData);
+          const filteredData = jsonData.filter(entry => entry.text !== '');
+          await FileSystem.writeAsStringAsync(fileUri, JSON.stringify(filteredData), { encoding: 'utf8' });
+          callback(); // Call the callback function
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
       const fetchEntries = async () => {
         const fileName = 'entries.json';
         const fileUri = `${FileSystem.documentDirectory}${fileName}`;
@@ -60,12 +77,14 @@ export default function Index() {
         }
       };
   
-      fetchEntries();
+      cleanEntries(() => {
+        fetchEntries();
+      });
     }, []);
   
     return (
       <View style={styles.scrollViewContainer}>
-      <ScrollView style={styles.entriesView}>
+      <ScrollView >
        {entries.map((entry, index) => (
           <View style={styles.scrollViewEntries} key={index}>
             <Text style={styles.entriesTitle}>
@@ -74,7 +93,7 @@ export default function Index() {
             <Text style={{ fontSize: 14, color: 'gray' }}>
               {new Date(entry.date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
             </Text>
-            <Text style={{ fontSize: 16 }}>
+            <Text style={styles.entriesText}>
               {entry.text}
             </Text>
             <View style={{ height: 10 }} />
@@ -94,26 +113,32 @@ export default function Index() {
   };
 
   return (
-    <View style={styles.container}>
+    <View>
       <EntriesList />
-      <Modal
-        style={styles.modalContent}
-        visible={modalVisible}
-        animationType="slide"
-        onRequestClose={handleModalClose}
-      >
-        <View style={styles.container}>
+        <Modal
+          //style={styles.modalContainer}
+          visible={modalVisible}
+          animationType="slide"
+          onRequestClose={handleModalClose}
+        >
+          <View style={styles.modalContainer}>
           <TextInput
-          style={styles.textInput}
+            style={styles.textInput}
             value={inputText}
             onChangeText={handleTextInputChange}
-            placeholder="Type something..."
+            placeholder="Start typing you thoughts..."
           />
-          <Pressable onPress={handleSubmit}>
-            <Text>Submit</Text>
+          <Pressable style={styles.submitButton} onPress={handleSubmit}>
+            <Text style={styles.submitButtonIcon}>Done</Text>
           </Pressable>
-        </View>
-      </Modal>
-    </View>
+          <Pressable style={styles.closeModal} onPress={handleModalClose}>
+            <Text style={styles.closeModalIcon}>X</Text>
+          </Pressable>
+          <View/>
+            <Text style={styles.modalDateTitle}>{entryDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}</Text>
+          </View>
+        </Modal>
+      </View>
+    
   );
 }
