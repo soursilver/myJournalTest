@@ -115,30 +115,34 @@ export default function Index() {
   return (
     <View>
       <EntriesList />
-        <Modal
-          //style={styles.modalContainer}
-          visible={modalVisible}
-          animationType="slide"
-          onRequestClose={handleModalClose}
-        >
-          <View style={styles.modalContainer}>
+      <Modal
+        //style={styles.modalContainer}
+        visible={modalVisible}
+        animationType="slide"
+        onRequestClose={handleModalClose}
+      >
+        <View style={styles.modalContainer}>
+          <View style={styles.modalHeader}>
+            <Pressable style={styles.submitButton} onPress={handleSubmit}>
+              <Text style={styles.submitButtonIcon}>Done</Text>
+            </Pressable>
+            <Pressable style={styles.closeModal} onPress={handleModalClose}>
+              <Text style={styles.closeModalIcon}>X</Text>
+            </Pressable>
+            <View style={styles.modalHeaderText}>
+              <Text style={styles.modalDateTitle}>{entryDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}</Text>
+            </View>
+          </View>
           <TextInput
             style={styles.textInput}
             value={inputText}
             onChangeText={handleTextInputChange}
             placeholder="Start typing you thoughts..."
           />
-          <Pressable style={styles.submitButton} onPress={handleSubmit}>
-            <Text style={styles.submitButtonIcon}>Done</Text>
-          </Pressable>
-          <Pressable style={styles.closeModal} onPress={handleModalClose}>
-            <Text style={styles.closeModalIcon}>X</Text>
-          </Pressable>
-          <View/>
-            <Text style={styles.modalDateTitle}>{entryDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}</Text>
-          </View>
-        </Modal>
-      </View>
+
+        </View>
+      </Modal>
+    </View>
     
   );
 }

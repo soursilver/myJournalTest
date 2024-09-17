@@ -1,4 +1,11 @@
 import { StyleSheet } from 'react-native';
+const primaryBGColor = '#121212';
+const secondaryBGColor = '#222222';
+const textColor = '#f4feff';
+const headerColor = '#333333';
+const btnPurple = '#6200ea';
+const btnGreen = '#198754';
+const btnRed = '#bb2d3b';
 
 const styles = StyleSheet.create({
   container: {
@@ -9,15 +16,15 @@ const styles = StyleSheet.create({
   scrollViewContainer: {
     height: "95%",
     justifyContent: "flex-start",
-    backgroundColor: "#F1F7FC",
+    backgroundColor: secondaryBGColor,
   },
   scrollViewEntries: {
     paddingTop: '3%',
     paddingBottom: '3%',
     paddingLeft: "5%",
     paddingRight: "5%",
-    borderBottomWidth: 5,
-    borderBottomColor: "#DEF0FC",
+    borderBottomWidth: 1,
+    borderBottomColor: secondaryBGColor,
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -29,6 +36,7 @@ const styles = StyleSheet.create({
   },
   entriesText: {
     fontSize: 16,
+    color: textColor,
     paddingTop: 5,
     height: 65,
     overflow: 'hidden',
@@ -38,7 +46,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     bottom: 20,
     right: 20,
-    backgroundColor: "#6DB36C",
+    backgroundColor: btnPurple,
     borderRadius: 10,
     padding: 10,
     paddingLeft: 20,
@@ -49,13 +57,19 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   modalContainer: {
-    backgroundColor: "#fff",
-    padding: 20,
+    backgroundColor: secondaryBGColor,
+    color: textColor,
     height: "100%",
     
   },
-  modalContent: {
-    borderRadius: 4,
+  modalHeader: {
+    position: "absolute",
+    top: 0,
+    width: '100%',
+    height: 80,
+    borderWidth: 1,
+    borderRadius: 0,
+    borderBottomColor: headerColor,
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -63,9 +77,10 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    elevation: 5,
+    backgroundColor: secondaryBGColor,
   },
   textInput: {
+    color: textColor,
     position: "absolute",
     top: 80,
     width: '100%',
@@ -76,7 +91,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     left: 20,
-    backgroundColor: "#6DB36C",
+    backgroundColor: btnGreen,
     borderRadius: 10,
     padding: 10,
   },
@@ -88,7 +103,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: 20,
     right: 20,
-    backgroundColor: "#6DB36C",
+    backgroundColor: btnRed,
     borderRadius: 10,
     padding: 10,
   },
@@ -96,12 +111,23 @@ const styles = StyleSheet.create({
     color: "#F1F7FC",
     fontSize: 16,
   },
+  modalHeaderText: {
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    alignItems: 'center'
+  },
   modalDateTitle: {
     fontSize: 20,
     fontWeight: "bold",
-    color: "#6DB36C",
-    justifyContent: 'center',
-    textAlign: 'center',
+    color: textColor,
+    //center the text veritcally and horizontally
+    
+    //display: "flex",
+    //alignItems: "center",
+    //justifyContent: "center",  
+    //textAlign: 'center',
+    //textAlignVertical: 'center',
   },
 });
 

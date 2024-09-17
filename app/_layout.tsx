@@ -5,12 +5,12 @@ export default function RootLayout() {
     <Stack screenOptions={{
       title: 'My Journal',
       headerStyle: {
-        backgroundColor: '#9BC0E5',
+        backgroundColor: '#6200ea',
       },
       headerTintColor: '#44EFA6',
       headerTitleStyle: {
         fontWeight: 'bold',
-        color: "#2B303B",
+        color: "#ffffff",
       },
     }}>
       <Stack.Screen name="index" />
