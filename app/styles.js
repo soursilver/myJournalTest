@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
+    backgroundColor: secondaryBGColor,
   },
   scrollViewContainer: {
     height: "95%",
@@ -121,13 +122,12 @@ const styles = StyleSheet.create({
     fontSize: 20,
     fontWeight: "bold",
     color: textColor,
-    //center the text veritcally and horizontally
-    
-    //display: "flex",
-    //alignItems: "center",
-    //justifyContent: "center",  
-    //textAlign: 'center',
-    //textAlignVertical: 'center',
+  },
+  defaultbutton: {
+    backgroundColor: btnPurple,
+    borderRadius: 10,
+    padding: 10,
+    color: "#F1F7FC",
   },
 });
 
