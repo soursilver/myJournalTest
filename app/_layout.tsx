@@ -5,7 +5,7 @@ export default function RootLayout() {
     <Stack screenOptions={{
       title: 'My Journal',
       headerStyle: {
-        backgroundColor: '#6200ea',
+        backgroundColor: '#1f1f1f',
       },
       headerTintColor: '#44EFA6',
       headerTitleStyle: {

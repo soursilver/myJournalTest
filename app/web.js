@@ -15,6 +15,7 @@ export default function Web() {
   };
 
   const handleModalClose = () => {
+    console.log('handleModalClose called');
     setModalVisible(false);
   };
 
@@ -25,13 +26,48 @@ export default function Web() {
   const handleSubmit = async () => {
     const text = inputText;
     const date = new Date();
-    
+    //add the date, the time, and the inputText to the entries array
+    setEntries([...entries, { text, date: date.toISOString() }]);
     setModalVisible(false);
     setInputText('');
   };
 
+  const EntriesList = () => {
+    console.log({entries})
+  
+    useEffect(() => {
+      const fetchEntries = async () => {
+
+      }
+    }, []);
+    return (
+      <View style={styles.scrollViewContainer}>
+      <ScrollView >
+       {entries.map((entry, index) => (
+          <View style={styles.scrollViewEntries} key={index}>
+            <Text style={styles.entriesTitle}>
+              {new Date(entry.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}
+            </Text>
+            <Text style={{ fontSize: 14, color: 'gray' }}>
+              {new Date(entry.date).toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+            </Text>
+            <Text style={styles.entriesText}>
+              {entry.text}
+            </Text>
+            <View style={{ height: 10 }} />
+          </View>
+        ))}
+      </ScrollView>
+      <Pressable style={styles.newEntryButton} onPress={handleButtonPress}>
+        <Text style={styles.entryButtonText} >+</Text>
+      </Pressable>
+      </View>
+    );
+  }
+
   return (
-    <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+    <View style={styles.container}>
+      <EntriesList />
       <Modal
         visible={modalVisible}
         animationType="slide"
@@ -40,7 +76,7 @@ export default function Web() {
         <View style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <Pressable style={styles.submitButton} onPress={handleSubmit}>
-              <Text style={styles.submitButtonIcon}>Done</Text>
+              <Text style={styles.submitButtonIcon}>+</Text>
             </Pressable>
             <Pressable style={styles.closeModal} onPress={handleModalClose}>
               <Text style={styles.closeModalIcon}>X</Text>
@@ -57,14 +93,6 @@ export default function Web() {
           />
         </View>
       </Modal>
-      <Pressable style={styles.newEntryButton} onPress={handleButtonPress}>
-        <Text style={styles.entryButtonText} >+</Text>
-      </Pressable>
-      <Link href="/" asChild>
-      <Pressable>
-        <Text>Home</Text>
-      </Pressable>
-    </Link>
     </View>
   );
 }

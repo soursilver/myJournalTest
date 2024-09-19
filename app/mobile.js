@@ -123,7 +123,7 @@ export default function Mobile() {
         <View style={styles.modalContainer}>
           <View style={styles.modalHeader}>
             <Pressable style={styles.submitButton} onPress={handleSubmit}>
-              <Text style={styles.submitButtonIcon}>Done</Text>
+              <Text style={styles.submitButtonIcon}>+</Text>
             </Pressable>
             <Pressable style={styles.closeModal} onPress={handleModalClose}>
               <Text style={styles.closeModalIcon}>X</Text>

@@ -1,23 +1,27 @@
 import { StyleSheet } from 'react-native';
-const primaryBGColor = '#121212';
-const secondaryBGColor = '#222222';
+/*const primaryBGColor = '#222222';
 const textColor = '#f4feff';
 const headerColor = '#333333';
 const btnPurple = '#6200ea';
 const btnGreen = '#198754';
-const btnRed = '#bb2d3b';
+const btnRed = '#bb2d3b';*/
+
+const primaryBGColor = '#222222';
+const textColor = '#f4feff';
+const headerColor = '#1f1f1f';
+const btnPurple = '#a828e9';
+const btnGreen = '#4CC9EA';
+const btnRed = '#e94828';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: secondaryBGColor,
+    backgroundColor: primaryBGColor,
   },
   scrollViewContainer: {
     height: "95%",
     justifyContent: "flex-start",
-    backgroundColor: secondaryBGColor,
+    backgroundColor: primaryBGColor,
   },
   scrollViewEntries: {
     paddingTop: '3%',
@@ -25,7 +29,7 @@ const styles = StyleSheet.create({
     paddingLeft: "5%",
     paddingRight: "5%",
     borderBottomWidth: 1,
-    borderBottomColor: secondaryBGColor,
+    borderBottomColor: primaryBGColor,
     borderRadius: 10,
     overflow: 'hidden',
   },
@@ -58,7 +62,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
   },
   modalContainer: {
-    backgroundColor: secondaryBGColor,
+    backgroundColor: primaryBGColor,
     color: textColor,
     height: "100%",
     
@@ -78,7 +82,7 @@ const styles = StyleSheet.create({
     },
     shadowOpacity: 0.25,
     shadowRadius: 3.84,
-    backgroundColor: secondaryBGColor,
+    backgroundColor: headerColor,
   },
   textInput: {
     color: textColor,
@@ -95,10 +99,18 @@ const styles = StyleSheet.create({
     backgroundColor: btnGreen,
     borderRadius: 10,
     padding: 10,
+    height: 40,
+    width: 40,
+    zIndex: 1,
   },
   submitButtonIcon: {
     color: "#F1F7FC",
-    fontSize: 16,
+    fontSize: 18,
+    zIndex: 1,
+    flex: 1, 
+    flexDirection: 'row', 
+    justifyContent: 'center', 
+    alignItems: 'center',
   },
   closeModal: {
     position: "absolute",
@@ -107,21 +119,27 @@ const styles = StyleSheet.create({
     backgroundColor: btnRed,
     borderRadius: 10,
     padding: 10,
+    height: 40,
+    width: 40,
+    zIndex: 1,
   },
   closeModalIcon: {
     color: "#F1F7FC",
     fontSize: 16,
+    zIndex: 1,
   },
   modalHeaderText: {
     flex: 1, 
     flexDirection: 'row', 
     justifyContent: 'center', 
-    alignItems: 'center'
+    alignItems: 'center',
+    zIndex: 0,
   },
   modalDateTitle: {
     fontSize: 20,
     fontWeight: "bold",
     color: textColor,
+    zIndex: 0,
   },
   defaultbutton: {
     backgroundColor: btnPurple,
