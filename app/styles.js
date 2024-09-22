@@ -7,7 +7,7 @@ const btnGreen = '#198754';
 const btnRed = '#bb2d3b';*/
 
 const primaryBGColor = '#222222';
-const textColor = '#f4feff';
+const textColor = '#F1F7FC';
 const headerColor = '#1f1f1f';
 const btnPurple = '#a828e9';
 const btnGreen = '#4CC9EA';
@@ -145,7 +145,10 @@ const styles = StyleSheet.create({
     backgroundColor: btnPurple,
     borderRadius: 10,
     padding: 10,
-    color: "#F1F7FC",
+    height: 40,
+    width: 70,
+    left: '36%',
+    top: '40%',
   },
 });
 

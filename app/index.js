@@ -1,13 +1,25 @@
-import { View, Text, Pressable, Modal, TextInput, ScrollView } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import { View, Pressable} from 'react-native';
+import { ApplicationProvider, Layout, Text, Button } from '@ui-kitten/components';
+import * as eva from '@eva-design/eva';
 import styles from './styles';
-import * as FileSystem from 'expo-file-system';
 import { Link } from 'expo-router';
+// 1. import `NativeBaseProvider` component
+
 
 
 export default function Index() {
+
   return (
-    <View style={styles.container}>
+    <ApplicationProvider {...eva} theme={eva.dark}>
+      <Layout>
+        <Button appearance='filled'>
+          BUTTON
+        </Button>
+      </Layout>
+    </ApplicationProvider>
+  
+    /*<View style={styles.container}>
       <Link replace href="/mobile" asChild>
         <Pressable style={styles.defaultbutton}>
           <Text style={{color: "#F1F7FC"}}>Mobile</Text>
@@ -18,7 +30,6 @@ export default function Index() {
           <Text style={{color: "#F1F7FC"}}>Web</Text>
         </Pressable>
       </Link>
-    </View>
-    
+    </View>*/
   );
 }
