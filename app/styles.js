@@ -51,9 +51,9 @@ const styles = StyleSheet.create({
     paddingVertical: 5,
     paddingHorizontal: 5,
     fontSize: 20,
-    height: 40,
-    width: 40,
-    borderRadius: "50%",
+    height: 60,
+    width: 60,
+    borderRadius: 30,
     shadowColor: 'darkslategray',
     shadowOffset: {
       width: 0,

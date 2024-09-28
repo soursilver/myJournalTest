@@ -36,7 +36,10 @@ export default function Web() {
     setInputText('');
   };
 
-
+  const handleEditEntry = (entry) => {
+    setInputText(entry.text);
+  setModalVisible(true);
+  };
 
   const EntriesList = () => {
     console.log({ entries })
@@ -55,7 +58,7 @@ export default function Web() {
       <Layout level="1" style={styles.scrollViewContainer}>
         <ScrollView >
           {entries.map((entry, index) => (
-            <Card style={styles.scrollViewEntries} key={index}>
+            <Card style={styles.scrollViewEntries} key={index} onPress={() => handleEditEntry(entry)}>
               <Text style={styles.entriesTitle}>
                 {new Date(entry.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}
               </Text>

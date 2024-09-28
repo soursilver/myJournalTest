@@ -2,7 +2,7 @@ import { View, Text, Pressable, Modal, TextInput, ScrollView } from 'react-nativ
 import React, { useEffect, useState } from 'react';
 import styles from './styles';
 import * as FileSystem from 'expo-file-system';
-import { ApplicationProvider, IconRegistry, Layout, Button, Card, Input } from '@ui-kitten/components';
+import { ApplicationProvider, IconRegistry, Layout, Button, Card, Input, Icon, IconElement } from '@ui-kitten/components';
 import * as eva from '@eva-design/eva';
 import { EvaIconsPack } from '@ui-kitten/eva-icons';
 import { default as mapping } from './mapping.json';
@@ -47,6 +47,11 @@ export default function Mobile() {
 
         setModalVisible(false);
         setInputText('');
+    };
+
+    const handleEditEntry = (entry) => {
+      setInputText(entry.text);
+    setModalVisible(true);
     };
 
     const EntriesList = () => {
@@ -95,7 +100,7 @@ export default function Mobile() {
             <Layout level="1" style={styles.scrollViewContainer}>
         <ScrollView >
           {entries.map((entry, index) => (
-            <Card style={styles.scrollViewEntries} key={index}>
+            <Card style={styles.scrollViewEntries} key={index} onPress={() => handleEditEntry(entry)}>
               <Text style={styles.entriesTitle}>
                 {new Date(entry.date).toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}
               </Text>
@@ -105,7 +110,6 @@ export default function Mobile() {
               <Text style={styles.entriesText}>
                 {entry.text}
               </Text>
-              <View style={{ height: 10 }} />
             </Card>
           ))}
         </ScrollView>
@@ -128,8 +132,9 @@ export default function Mobile() {
     );
 
     return (
+      <>
+    <IconRegistry icons={EvaIconsPack} />
         <ApplicationProvider {...eva} customMapping={mapping} theme={eva.dark}>
-            <StatusBar style="light" />
       <Layout style={styles.container}>
         <EntriesList />
         <Modal
@@ -141,9 +146,9 @@ export default function Mobile() {
             <Layout style={styles.modalHeader}>
             <Button appearance='ghost' status='success' accessoryLeft={CheckIcon} style={styles.submitButton} onPress={handleSubmit}></Button>
             <Button appearance='ghost' status='danger' accessoryLeft={CloseIcon} style={styles.closeModal} onPress={handleModalClose}></Button>
-              <View style={styles.modalHeaderText}>
+              <Layout style={styles.modalHeaderText}>
                 <Text style={styles.modalDateTitle}>{entryDate.toLocaleDateString('en-US', { day: 'numeric', month: 'short', weekday: 'short' }).toUpperCase()}</Text>
-              </View>
+              </Layout>
             </Layout>
             <Input
             multiline={true}
@@ -157,6 +162,6 @@ export default function Mobile() {
         </Modal>
       </Layout>
     </ApplicationProvider>
-
+    </>
     );
 }
