@@ -1,0 +1,188 @@
+{   "strict": {
+        "primary-btn": "#7a5af5",
+        "backgroundColor1": "#18171E",
+        "backgroundColor2": "#252329",
+        "backgroundColor3": "#363039",
+        "success-btn": "#67cbde",
+        "danger-btn": "#F46583"
+    },
+    "components": {
+        "Button": {
+            "meta": {},
+            "appearances": {
+                "filled": {
+                    "mapping": {},
+                    "variantGroups": {
+                        "status": {
+                            "primary": {
+                                "borderColor": "primary-btn",
+                                "backgroundColor": "primary-btn",
+                                "textColor": "text-control-color",
+                                "iconTintColor": "text-control-color",
+                                "state": {
+                                    "focused": {
+                                        "borderColor": "color-primary-focus-border",
+                                        "backgroundColor": "color-primary-focus"
+                                    },
+                                    "hover": {
+                                        "borderColor": "color-primary-hover-border",
+                                        "backgroundColor": "color-primary-hover"
+                                    },
+                                    "active": {
+                                        "borderColor": "color-primary-active-border",
+                                        "backgroundColor": "color-primary-active"
+                                    },
+                                    "disabled": {
+                                        "borderColor": "color-primary-disabled-border",
+                                        "backgroundColor": "color-primary-disabled",
+                                        "textColor": "text-disabled-color",
+                                        "iconTintColor": "text-disabled-color"
+                                    }
+                                }
+                            },
+                            "success": {
+                                "borderColor": "success-btn",
+                                "backgroundColor": "success-btn",
+                                "textColor": "#18171E",
+                                "iconTintColor": "text-control-color",
+                                "state": {
+                                    "focused": {
+                                        "borderColor": "color-success-focus-border",
+                                        "backgroundColor": "color-success-focus"
+                                    },
+                                    "hover": {
+                                        "borderColor": "color-success-hover-border",
+                                        "backgroundColor": "color-success-hover"
+                                    },
+                                    "active": {
+                                        "borderColor": "color-success-active-border",
+                                        "backgroundColor": "color-success-active"
+                                    },
+                                    "disabled": {
+                                        "borderColor": "color-success-disabled-border",
+                                        "backgroundColor": "color-success-disabled",
+                                        "textColor": "text-disabled-color",
+                                        "iconTintColor": "text-disabled-color"
+                                    }
+                                }
+                            },
+                            "danger": {
+                                "borderColor": "danger-btn",
+                                "backgroundColor": "danger-btn",
+                                "textColor": "#18171E",
+                                "iconTintColor": "text-control-color",
+                                "state": {
+                                    "focused": {
+                                        "borderColor": "color-danger-focus-border",
+                                        "backgroundColor": "color-danger-focus"
+                                    },
+                                    "hover": {
+                                        "borderColor": "color-danger-hover-border",
+                                        "backgroundColor": "color-danger-hover"
+                                    },
+                                    "active": {
+                                        "borderColor": "color-danger-active-border",
+                                        "backgroundColor": "color-danger-active"
+                                    },
+                                    "disabled": {
+                                        "borderColor": "color-danger-disabled-border",
+                                        "backgroundColor": "color-danger-disabled",
+                                        "textColor": "text-disabled-color",
+                                        "iconTintColor": "text-disabled-color"
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Layout": {
+            "meta": {},
+            "appearances": {
+                "default": {
+                    "mapping": {},
+                    "variantGroups": {
+                        "level": {
+                            "1": {
+                                "backgroundColor": "backgroundColor1"
+                            },
+                            "2": {
+                                "backgroundColor": "backgroundColor2"
+                            },
+                            "3": {
+                                "backgroundColor": "background-basic-color-3"
+                            },
+                            "4": {
+                                "backgroundColor": "background-basic-color-4"
+                            }
+                        }
+                    }
+                }
+            }
+        },
+        "Card": {
+            "meta": {},
+            "appearances": {
+                "outline": {
+                    "mapping": {
+                        "backgroundColor": "backgroundColor2",
+                        "borderRadius": 10,
+                        "borderColor": "border-basic-color-4",
+                        "borderWidth": 1,
+                        "accentHeight": 0,
+                        "bodyPaddingHorizontal": 16,
+                        "bodyPaddingVertical": 16,
+                        "headerPaddingHorizontal": 24,
+                        "headerPaddingVertical": 16,
+                        "footerPaddingHorizontal": 24,
+                        "footerPaddingVertical": 16,
+                        "state": {
+                            "active": {
+                                "backgroundColor": "background-basic-color-2"
+                            }
+                        }
+                    },
+                    "variantGroups": {
+                        "status": {
+                            "basic": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-basic-default"
+                            },
+                            "primary": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-primary-default"
+                            },
+                            "success": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-success-default"
+                            },
+                            "info": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-info-default"
+                            },
+                            "warning": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-warning-default"
+                            },
+                            "danger": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-danger-default"
+                            },
+                            "control": {
+                                "accentHeight": 4,
+                                "accentBackgroundColor": "color-control-default"
+                            }
+                        }
+                    }
+                },
+                "filled": {
+                    "mapping": {
+                        "borderWidth": 0,
+                        "borderColor": "transparent"
+                    }
+                }
+            }
+        }
+    }
+}

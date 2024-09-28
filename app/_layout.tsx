@@ -4,10 +4,12 @@ export default function RootLayout() {
   return (
     <Stack screenOptions={{
       title: 'My Journal',
+      statusBarStyle: 'light',
       headerStyle: {
-        backgroundColor: '#1f1f1f',
+        backgroundColor: '#18171E',
+        // @ts-ignore
+        borderWidth: 0,
       },
-      headerTintColor: '#44EFA6',
       headerTitleStyle: {
         fontWeight: 'bold',
         color: "#ffffff",
