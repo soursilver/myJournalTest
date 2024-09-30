@@ -130,6 +130,14 @@ const styles = StyleSheet.create({
     flexWrap: 'wrap',
     height: '100%',
   },
+  deleteButton: {
+    position: 'absolute',
+    top: 10,
+    right: 10,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
+},
 });
 
 export default styles;
